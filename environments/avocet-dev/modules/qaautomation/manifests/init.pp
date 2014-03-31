@@ -46,6 +46,16 @@ class qaautomation ($log_file_path = '/var/log/nightly.log') {
         content => template('qaautomation/deletedata.sh.erb')
     }
 
+    file { 'journals.csv':
+        path => "${scripts_dir}/journals.csv",
+        content => template('qaautomation/journals.csv'),
+    }
+
+    file { 'departments.csv':
+        path => "${scripts_dir}/departments.csv",
+        content => template('qaautomation/departments.csv'),
+    }
+
     file { 'nightly.sh':
         path => "${scripts_dir}/nightly.sh",
         mode => 0755,
