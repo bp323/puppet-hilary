@@ -32,6 +32,23 @@ server {
     ssl_ciphers RC4:HIGH:!aNULL:!MD5;
     ssl_prefer_server_ciphers on;
 
+
+    ############
+    ## AVOCET ##
+    ############
+
+    location /api/departments/import {
+        <% if rate_limit_api -%>
+            limit_req zone=addr_api burst=10;
+        <% end -%>
+
+        expires -1;
+        proxy_read_timeout 120;
+        proxy_next_upstream error http_502;
+        proxy_pass http://tenantworkers;
+    }
+
+
     ######################
     ## SHARED RESOURCES ##
     ######################
