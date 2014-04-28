@@ -22,21 +22,6 @@ server {
     ssl_prefer_server_ciphers on;
 
 
-    ############
-    ## AVOCET ##
-    ############
-
-    location /api/journals/import {
-        <% if rate_limit_api -%>
-            limit_req zone=addr_api burst=10;
-        <% end -%>
-
-        expires -1;
-        proxy_read_timeout 120;
-        proxy_next_upstream error http_502;
-        proxy_pass http://globaladminworkers;
-    }
-
     ######################
     ## SHARED RESOURCES ##
     ######################
@@ -74,39 +59,60 @@ server {
     ## APP SERVER REQUESTS ##
     #########################
 
-    location /api/ui/skin {
-        expires 15m;
-        proxy_pass http://globaladminworkers;
-    }
 
-    location /api/ui/staticbatch {
-        expires max;
-        proxy_pass http://globaladminworkers;
-    }
+        ############
+        ## AVOCET ##
+        ############
 
-    location /api/ui/widgets {
-        expires 15m;
-        proxy_pass http://globaladminworkers;
-    }
+        location /api/journals/import {
+            <% if rate_limit_api -%>
+                limit_req zone=addr_api burst=10;
+            <% end -%>
 
-    location /api/user/import {
-        <% if rate_limit_api -%>
-            limit_req zone=addr_api burst=10;
-        <% end -%>
+            expires -1;
+            proxy_read_timeout 120;
+            proxy_next_upstream error http_502;
+            proxy_pass http://globaladminworkers;
+        }
 
-        expires -1;
-        proxy_read_timeout 300;
-        proxy_next_upstream error http_502;
-        proxy_pass http://globaladminworkers;
-    }
 
-    # Explicitly don't cache any other API requests
-    location /api/ {
-        <% if rate_limit_api -%>
-            limit_req zone=addr_api burst=400;
-        <% end -%>
+        ############
+        ## SHARED ##
+        ############
 
-        expires -1;
-        proxy_pass http://globaladminworkers;
-    }
+        location /api/ui/skin {
+            expires 15m;
+            proxy_pass http://globaladminworkers;
+        }
+
+        location /api/ui/staticbatch {
+            expires max;
+            proxy_pass http://globaladminworkers;
+        }
+
+        location /api/ui/widgets {
+            expires 15m;
+            proxy_pass http://globaladminworkers;
+        }
+
+        location /api/user/import {
+            <% if rate_limit_api -%>
+                limit_req zone=addr_api burst=10;
+            <% end -%>
+
+            expires -1;
+            proxy_read_timeout 300;
+            proxy_next_upstream error http_502;
+            proxy_pass http://globaladminworkers;
+        }
+
+        # Explicitly don't cache any other API requests
+        location /api/ {
+            <% if rate_limit_api -%>
+                limit_req zone=addr_api burst=400;
+            <% end -%>
+
+            expires -1;
+            proxy_pass http://globaladminworkers;
+        }
 }
