@@ -221,7 +221,7 @@ server {
             proxy_pass http://tenantworkers;
         }
 
-        location /api/ticket/create {
+        location /api/tickets/create {
     <% if rate_limit_api -%>
             limit_req zone=addr_api_create burst=10;
     <% end -%>
