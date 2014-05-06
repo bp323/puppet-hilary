@@ -77,3 +77,5 @@ curl --cookie connect.sess=${ADMIN_COOKIE} -e "/" -F "departments=@/opt/scripts/
 # Upload the journals
 curl --cookie connect.sess=${ADMIN_COOKIE} -e "/" -F"journals=@/opt/scripts/journals.csv" http://admin.dev0.avocet.cam.ac.uk/api/journals/import
 
+# Set the addendum download url
+curl --cookie connect.sess=${ADMIN_COOKIE} -e "/" -d "oae-tickets/symplectic/addendumUrl=/<%= addendum_url %>" http://<%= admin_host %>/api/config/cam
