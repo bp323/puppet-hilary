@@ -32,6 +32,18 @@ server {
         expires max;
     }
 
+    # HTML files under /avocet/errors are not hashed and should not be cached
+    location ~* /avocet/errors/([^\.]+).html$ {
+        alias <%= app_ui_path %>/avocet/errors/$1.html;
+        expires -1;
+    }
+
+    rewrite ^/accessdenied      /avocet/errors/accessdenied.html last;
+    rewrite ^/maintenance       /avocet/errors/maintenance.html last;
+    rewrite ^/noscript          /avocet/errors/noscript.html last;
+    rewrite ^/notfound          /avocet/errors/notfound.html last;
+    rewrite ^/unavailable       /avocet/errors/unavailable.html last;
+
     rewrite ^/favicon.ico /shared/oae/img/favicon.ico last;
 
 
@@ -53,6 +65,16 @@ server {
 
     rewrite ^/$              /admin/index.html last;
     rewrite ^/tenant/(.*)$   /admin/index.html last;
+
+
+    #################
+    ## ERROR PAGES ##
+    #################
+
+    error_page      401     /avocet/errors/accessdenied.html;
+    error_page      404     /avocet/errors/notfound.html;
+    error_page      502     /avocet/errors/unavailable.html;
+    error_page      503     /avocet/errors/maintenance.html;
 
 
     #########################
