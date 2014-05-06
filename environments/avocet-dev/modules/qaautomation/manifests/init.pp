@@ -38,6 +38,8 @@ class qaautomation ($log_file_path = '/var/log/nightly.log') {
     $slideshare_shared_secret = hiera('automation_slideshare_shared_secret')
     $slideshare_api_key = hiera('automation_slideshare_api_key')
 
+    $addendum_url = hiera('automation_addendum_url')
+
     exec { 'mkdir_scripts': command => "mkdir -p ${scripts_dir}", unless => "test -d ${scripts_dir}" }
 
     file { 'deletedata.sh':

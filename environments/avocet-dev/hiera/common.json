@@ -45,7 +45,7 @@
     "ux_root_dir": "/opt/3akai-ux",
     "ux_install_method": "git",
     "ux_install_config": {"source": "https://github.com/CUL-DigitalServices/avocet-ui.git", "revision": "master"},
-    
+
     "db_cluster_name": "Avocet QA Cluster",
     "db_keyspace": "oae",
     "db_hosts": [ "127.0.0.1" ],
@@ -133,6 +133,7 @@
     "automation_flickr_api_secret": "unset",
     "automation_slideshare_shared_secret": "unset",
     "automation_slideshare_api_key": "unset",
+    "automation_addendum_url": "http://www.sparc.arl.org/sites/default/files/Access-Reuse_Addendum.pdf",
 
     "oaeservice::limits::user_soft_max_files": "8192",
     "oaeservice::limits::user_hard_max_files": "32000"
