@@ -74,7 +74,7 @@ server {
     ######################
 
     location /node_modules/ {
-        alias <%= nginxConf.UX_HOME %>/node_modules/;
+        alias <%= app_ui_path %>/node_modules/;
         autoindex off;
         expires max;
     }

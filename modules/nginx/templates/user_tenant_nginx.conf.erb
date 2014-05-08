@@ -98,7 +98,7 @@ server {
     location /avocet/ {
         alias <%= app_ui_path %>/avocet/;
         autoindex off;
-        expires -1;
+        expires max;
     }
 
     # HTML files under /avocet are not hashed and should not be cached
