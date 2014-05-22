@@ -51,6 +51,12 @@ server {
     ## ADMIN RESOURCES ##
     #####################
 
+    location /ui/ {
+        alias <%= app_ui_path %>/ui/;
+        autoindex off;
+        expires max;
+    }
+
     location /admin/ {
         alias <%= app_ui_path %>/admin/;
         autoindex off;
