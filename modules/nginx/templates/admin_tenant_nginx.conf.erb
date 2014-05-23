@@ -79,7 +79,7 @@ server {
     ######################
 
     location /avocet/ {
-        alias <%= nginxConf.UX_HOME %>/avocet/;
+        alias <%= app_ui_path %>/avocet/;
         autoindex off;
         expires max;
     }
