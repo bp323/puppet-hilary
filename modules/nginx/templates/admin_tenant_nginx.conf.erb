@@ -39,17 +39,23 @@ server {
     }
 
     rewrite ^/accessdenied      /avocet/errors/accessdenied.html last;
-    rewrite ^/maintenance       /avocet/errors/maintenance.html last;
+    rewrite ^/maintenance       /avocet/errors/unavailable.html last;
     rewrite ^/noscript          /avocet/errors/noscript.html last;
     rewrite ^/notfound          /avocet/errors/notfound.html last;
     rewrite ^/unavailable       /avocet/errors/unavailable.html last;
 
-    rewrite ^/favicon.ico /shared/oae/img/favicon.ico last;
+    rewrite ^/favicon.ico       /avocet/images/favicon.ico last;
 
 
     #####################
     ## ADMIN RESOURCES ##
     #####################
+
+    location /ui/ {
+        alias <%= app_ui_path %>/ui/;
+        autoindex off;
+        expires max;
+    }
 
     location /admin/ {
         alias <%= app_ui_path %>/admin/;
@@ -68,6 +74,15 @@ server {
     rewrite ^/tenants        /admin/index.html last;
     rewrite ^/tenant/(.*)$   /admin/index.html last;
 
+    ######################
+    ## AVOCET RESOURCES ##
+    ######################
+
+    location /avocet/ {
+        alias <%= app_ui_path %>/avocet/;
+        autoindex off;
+        expires max;
+    }
 
     ######################
     ## WIDGET RESOURCES ##
@@ -87,7 +102,7 @@ server {
     error_page      401     /avocet/errors/accessdenied.html;
     error_page      404     /avocet/errors/notfound.html;
     error_page      502     /avocet/errors/unavailable.html;
-    error_page      503     /avocet/errors/maintenance.html;
+    error_page      503     /avocet/errors/unavailable.html;
 
 
     #########################

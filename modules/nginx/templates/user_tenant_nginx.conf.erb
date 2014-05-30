@@ -50,12 +50,12 @@ server {
     }
 
     rewrite ^/accessdenied      /avocet/errors/accessdenied.html last;
-    rewrite ^/maintenance       /avocet/errors/maintenance.html last;
+    rewrite ^/maintenance       /avocet/errors/unavailable.html last;
     rewrite ^/noscript          /avocet/errors/noscript.html last;
     rewrite ^/notfound          /avocet/errors/notfound.html last;
     rewrite ^/unavailable       /avocet/errors/unavailable.html last;
 
-    rewrite ^/favicon.ico       /shared/oae/img/favicon.ico last;
+    rewrite ^/favicon.ico       /avocet/images/favicon.ico last;
 
 
     #####################
@@ -153,7 +153,7 @@ server {
     error_page      401     /avocet/errors/accessdenied.html;
     error_page      404     /avocet/errors/notfound.html;
     error_page      502     /avocet/errors/unavailable.html;
-    error_page      503     /avocet/errors/maintenance.html;
+    error_page      503     /avocet/errors/unavailable.html;
 
 
 <% if static_assets_dir -%>
