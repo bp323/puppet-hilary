@@ -77,9 +77,6 @@ curl --cookie connect.sess=${ADMIN_COOKIE} -e "/" -d "oae-authentication/twitter
 # Enable the Google strategy
 curl --cookie connect.sess=${ADMIN_COOKIE} -e "/" -d "oae-authentication/google/enabled=true" -d"oae-authentication/google/key=832766182042-er6qqh5nqitn30oqrtad7mvgcadl6dcr.apps.googleusercontent.com" -d"oae-authentication/google/secret=MKo6exTvIM8_tiJDt1t4zYWz" http://<%= admin_host %>/api/config/cam
 
-# Enable the Google Analytics
-curl --cookie connect.sess=${ADMIN_COOKIE} -e "/" -d "oae-google-analytics/google-analytics/tenantEnabled=true" -d "oae-google-analytics/google-analytics/tenantTrackingId=UA-50943956-2" http://<%= admin_host %>/api/config/cam
-
 # Upload the departments
 curl --cookie connect.sess=${ADMIN_COOKIE} -e "/" -F "departments=@/opt/scripts/departments.csv" -F"tenantAlias=cam" http://admin.dev0.avocet.cam.ac.uk/api/departments/import
 
