@@ -59,7 +59,7 @@ npm install -g oaesh
 echo ""
 echo "Creating tenant"
 oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
-    exec -m POST "/api/tenant/create?alias=cam&displayName=Cambridge&host=ec2-54-73-99-234.eu-west-1.compute.amazonaws.com"
+    exec -m POST "/api/tenant/create" -d "alias=cam" -d "displayName=Cambridge" -d "host=ec2-54-73-99-234.eu-west-1.compute.amazonaws.com"
 
 # Disable reCaptcha
 echo ""
@@ -105,19 +105,18 @@ oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
 # Upload the departments
 echo ""
 echo "Uploading departments for tenant"
-# oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
-#   exec \
-#       -m POST "http://admin.dev0.avocet.cam.ac.uk/api/departments/import" \
-#       --tenant=cam \
-#       -F "departments=@/opt/scripts/departments.csv"
+oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
+    exec -m POST "/api/departments/import" \
+       -d "tenantAlias=cam" \
+       -F "departments=/opt/scripts/departments.csv"
 
 # Upload the journals
 echo ""
 echo "Uploading journals"
-# oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
-#   exec \
-#       -m POST "http://admin.dev0.avocet.cam.ac.uk/api/journals/import" \
-#       -F "journals=@/opt/scripts/journals.csv"
+oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
+    exec \
+        -m POST "/api/journals/import" \
+        -F "journals=@/opt/scripts/journals.csv"
 
 # Set the addendum download url
 echo ""
