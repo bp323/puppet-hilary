@@ -116,11 +116,11 @@ echo "Uploading journals"
 oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
     exec \
         -m POST "/api/journals/import" \
-        -F "journals=@/opt/scripts/journals.csv"
+        -F "journals=/opt/scripts/journals.csv"
 
 # Set the addendum download url
 echo ""
 echo "Configuring addendum url"
 oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
     config-set \
-        -k "oae-tickets/general/addendumUrl=<%= addendum_url %>"
+        -k "oae-publications/general/addendumUrl=<%= addendum_url %>"
