@@ -114,6 +114,14 @@ oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
         -k "oae-feedbackify/feedbackify/widgetPosition=left" \
         -k "oae-feedbackify/feedbackify/widgetBodyClass=oa-feedbackify"
 
+# Enable Google Analytics
+echo ""
+echo "Enabling Google Analytics"
+oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
+    config-set \
+        -k "oae-google-analytics/google-analytics/tenantEnabled=true" \
+        -k "oae-google-analytics/google-analytics/tenantTrackingId=UA-50943956-3" \
+
 # Upload the departments
 echo ""
 echo "Uploading departments for tenant"
