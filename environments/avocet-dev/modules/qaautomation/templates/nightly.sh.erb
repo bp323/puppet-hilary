@@ -148,7 +148,7 @@ oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
 # Enable and set the Terms and conditions
 echo ""
 echo "Enabling Terms and Conditions"
-TERMSANDCONDITIONS=$(</opt/scripts/termsandconditions.md)
+TERMSANDCONDITIONS=$(cat /opt/scripts/termsandconditions.md)
 oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
     config-set \
         -k "oae-principals/termsAndConditions/enabled=true" \
