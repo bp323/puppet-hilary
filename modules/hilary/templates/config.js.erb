@@ -138,7 +138,7 @@ config.log = {
         ,{
             'type': 'raw',
             'stream': logstash.createStream({
-                'host': <%= config_monitoring_host %>,
+                'host': '<%= config_monitoring_host %>',
                 'port': <%= config_monitoring_port %>
             })
         }
