@@ -5,7 +5,7 @@ class newrelic (
 
   # Add newrelic.js to the app root directory
   file { '/opt/oae/newrelic.js':
-    ensure  => present
+    ensure  => present,
     content => template('newrelic/newrelic.js.erb'),
   }
 }
