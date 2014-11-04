@@ -92,6 +92,9 @@
 
     "email_debug": true,
     "email_customEmailTemplatesDir": "null",
+    "email_deduplicationInterval": 604800,
+    "email_throttleTimespan": 120,
+    "email_throttleCount": 10,
     "email_transport": "SMTP",
     "email_sendmail_path": "/usr/sbin/sendmail",
     "email_smtp_service": "unset",
@@ -118,7 +121,7 @@
     "nginx::group": "nginx",
     "nginx::rate_limit_api": false,
     "nginx::ssl_policy": "allow_http",
-    "nginx::version": "1.5.6-1~precise0",
+    "nginx::version": "1.7.6-1+precise1",
 
     "redis::owner": "redis",
     "redis::group": "redis",
