@@ -41,6 +41,10 @@
     },
     "app_ui_path": "/opt/3akai-ux",
 
+    "shibboleth_entity_id": "https://shib-sp.staging0.avocet.cam.ac.uk/shibboleth",
+    "shibboleth_keyname": "shib-sp.staging0.avocet.cam.ac.uk",
+    "shibboleth_subjectname": "CN=shib-sp.staging0.avocet.cam.ac.uk",
+    "shibboleth_sp_host": "shib-sp.staging0.avocet.cam.ac.uk",
 
     "ux_root_dir": "/opt/3akai-ux",
     "ux_install_method": "git",
