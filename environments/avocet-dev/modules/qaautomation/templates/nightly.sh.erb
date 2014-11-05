@@ -138,7 +138,7 @@ oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
 
 # Upload the departments
 echo ""
-echo "Uploading departments for tenant"
+echo "Uploading departments"
 oaesh -U http://<%= admin_host %> -u administrator -p administrator -- \
     exec -m POST "/api/departments/import" \
        -d "tenantAlias=cam" \
