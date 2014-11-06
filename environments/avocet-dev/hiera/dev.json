@@ -10,7 +10,7 @@
         "::oaeservice::nginx",
         "::oaeservice::postfix",
         "::oaeservice::redis",
-        "::oaeservice::ui"
+        "::oaeservice::ui",
         "::oaeservice::shibboleth"
     ]
 }
