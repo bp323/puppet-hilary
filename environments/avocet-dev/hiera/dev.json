@@ -11,5 +11,6 @@
         "::oaeservice::postfix",
         "::oaeservice::redis",
         "::oaeservice::ui"
+        "::oaeservice::shibboleth"
     ]
 }
